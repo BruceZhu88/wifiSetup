@@ -201,7 +201,10 @@ class wifiSetup():
 
         url = "http://192.168.1.1/api/setData?path=BeoWeb%3A%2Fnetwork&roles=activate&value=%7B%22networkProfile%22%3A%7B%22softApSettings%22%3A%7B%22manualSwitch%22%3Atrue%2C%22apNetmask%22%3A%22255.255.255.0%22%2C%22dhcpNetmask%22%3A%22255.255.255.0%22%2C%22channel%22%3A1%2C%22targetType%22%3A%22automatic%22%2C%22dhcpRangeTo%22%3A%22192.168.1.200%22%2C%22vendorSpecificData%22%3A%22dd4f00a040000706501e2d0093260002f003011342656f706c6179204d335f3030303934373630031853747265616d383030204576616c756174696f6e204b6974020e42616e67416e644f6c756673656e%22%2C%22ssid%22%3A%22Beoplay+M3_00094760%22%2C%22dhcpRangeFrom%22%3A%22192.168.1.20%22%2C%22apAddress%22%3A%22192.168.1.1%22%7D%2C%22wireless%22%3A%7B%22dhcp%22%3Atrue%2C%22ip%22%3A%22%22%2C%22netmask%22%3A%22%22%2C%22gateway%22%3A%22%22%2C%22dns%22%3A%5B%22%22%2C%22%22%5D%2C%22ssid%22%3A%22D-Link_DIR-850L_5GHz%22%2C%22encryption%22%3A%22wpa_psk%22%2C%22key%22%3A%229876543210.%22%7D%2C%22wired%22%3A%7B%22dhcp%22%3Atrue%2C%22ip%22%3A%22%22%2C%22netmask%22%3A%22%22%2C%22gateway%22%3A%22%22%2C%22dns%22%3A%5B%22%22%2C%22%22%5D%7D%2C%22type%22%3A%22automatic%22%7D%2C%22type%22%3A%22networkProfile%22%7D&_nocache=1497005374399"
 
-        print(urllib.parse.unquote(url))
+        url = urllib.parse.unquote(url)
+        value = re.findall(r'value=(.*)_nocache', url)
+        data = json.loads(value)
+        print(value)
 
 if __name__=="__main__":
     wifiSetup = wifiSetup()
