@@ -206,7 +206,7 @@ if __name__=="__main__":
     #hostName = "beoplay-{model}-{SN}.local".format(model=model, SN=SN)
     hostUrl = "http://{host}//index.fcgi"
 
-    for cycle in range(1,10):
+    for cycle in range(1,20):
         print("This is the %d times "%cycle+"*"*60)
         while True:
             if wifiSetup.find_wifi(productName):
@@ -229,13 +229,16 @@ if __name__=="__main__":
                             break
                         time.sleep(3)
                         print("sleep 3 seconds")
-                    if i!=14:
+                    if i==14:
+                        print("Cannot find IP")
+                        break
+                    else:
                         wifiSetup.urlRequests(hostUrl.format(host=ip))
                         wifiSetup.reset(ip)
                         time.sleep(30)
                 else:
-                    break
                     print("Cannot connect wifi %s"%TestWifi)
+                    break
 
 
 
