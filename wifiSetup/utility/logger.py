@@ -11,16 +11,16 @@ import logging
 class Logger(object):
     '''
     '''
-        
+
 
     def __init__(self):
         '''
         Constructor
         '''
         #self.cfg=getTestConfig('testconfig.ini')
-        
-      
-        
+
+
+
     @classmethod
     def init_logger(cls,project_code, root_dir = None):
         #cfg=getTestConfig('testconfig.ini')
@@ -91,7 +91,7 @@ class Logger(object):
     def make_root_dir(cls, project_code, root_dir = None):
         cls.log_conf = dict(root_run = os.getcwd())
         """
-        
+
         if not root_dir:
             if os.environ.has_key('AT_LOGGER_DIR'):
                 root_dir = os.environ['AT_LOGGER_DIR']
@@ -102,7 +102,7 @@ class Logger(object):
         """
         root_dir = os.path.realpath(os.path.join(os.getcwd(), "..", 'log'))
         runlog_dir = os.path.realpath(os.path.join(root_dir, project_code))
-        print(runlog_dir)
+        #print(runlog_dir)
         if not os.path.exists(runlog_dir):
             os.makedirs(runlog_dir)
 
@@ -160,10 +160,10 @@ class Logger(object):
 
 
 if __name__ == "__main__":
-    
+
     '''
     '''
-    
+
     log_conf = Logger.init_logger('project.log')
     logging.log(logging.DEBUG, 'Debug message')
     logging.log(logging.INFO, 'info message')
