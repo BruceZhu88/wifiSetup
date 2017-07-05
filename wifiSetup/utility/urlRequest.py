@@ -23,11 +23,11 @@ class urlRequest():
             return True
         return False
 
-    def get(self, url):
+    def get(self, url, timeout=8):
         html = ''
         try:
             logging.log(logging.INFO, 'Request get to %s'%url)
-            r = requests.get(url, headers=self.headers, timeout = 8)
+            r = requests.get(url, headers=self.headers, timeout = timeout)
             r.raise_for_status() #status_code = r.status_code
         except requests.RequestException as e:
             logging.log(logging.ERROR, e)
